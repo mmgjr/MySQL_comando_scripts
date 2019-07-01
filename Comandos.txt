@@ -1,10 +1,4 @@
-/*
 
-DDL (Data Definition Language)-> Create table,Create DataBase,Alter Table,Drop Table
-DML (Data Manipulation Language)-> Insert Into,Update, Delete,Truncate
-DQL (Data Query Language) ou DML (Data Manipulation Language) -> SELECT
-
-*/
 
 create database Cadastro
 	default character set utf8
