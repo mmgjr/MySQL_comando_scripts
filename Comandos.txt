@@ -1,5 +1,4 @@
 /*
-Extensão de arquivo de banco sql é .sql
 
 DDL (Data Definition Language)-> Create table,Create DataBase,Alter Table,Drop Table
 DML (Data Manipulation Language)-> Insert Into,Update, Delete,Truncate
@@ -49,7 +48,7 @@ values(
 (
 'Pedro','1930-06-12','M','83.2','1.89',default),
 (
-'Janaína','1988-05-22','F','53.2','1.65','EUA');
+'JanaÃ­na','1988-05-22','F','53.2','1.65','EUA');
 
 /*Mudando o nome da coluna de uma tabela*/
 ALTER TABLE nomes_clientes 
@@ -62,9 +61,9 @@ alter table pessoas drop column profissao;
 alter table pessoas add column profissao varchar(10) after nome;
 alter table pessoas add column codigo int first;
 
-desc pessoas; /*confirmando a valor de profissão*/
+desc pessoas; /*confirmando a valor de profissÃ£o*/
 alter table pessoas modify column profissao varchar(20) not null default '';
-desc pessoas; /*verificando a modificação*/
+desc pessoas; /*verificando a modificaÃ§Ã£o*/
 
 alter table pessoas change column profissao prof varchar(20) not null default '';
 alter table pessoas change column prof profissao varchar(20) not null default '';
@@ -88,15 +87,15 @@ alter table cursos add primary key (idcursos);
 
 insert into cursos values
 ('1','HTML4','Curso de HTML5','40','37','2014'),
-('2','Algoritmos','Lógica de Programação','20','15','2014'),
+('2','Algoritmos','LÃ³gica de ProgramaÃ§Ã£o','20','15','2014'),
 ('3','Photoshop','Dicas de Photoshop CC','10','8','2014'),
 ('4','PGP','Curso de PHP para iniciantes','40','20','2010'),
-('5','Jarva','Introdução à Linguagem Java','10','29','2000'),
+('5','Jarva','IntroduÃ§Ã£o Ã  Linguagem Java','10','29','2000'),
 ('6','MySQL','Banco de Dados MySQL','30','15','2016'),
 ('7','Word','Curso Completo de Word','40','30','2018'),
-('8','Sapateado','Danças Rítmicas','40','30','2018'),
-('9','Cozinha Árabe','Aprenda a fazer Kibe','40','30','2018'),
-('10','YouTuber','Gerar polêmica e ganhar inscritos','5','2','2018');
+('8','Sapateado','DanÃ§as RÃ­tmicas','40','30','2018'),
+('9','Cozinha Ãrabe','Aprenda a fazer Kibe','40','30','2018'),
+('10','YouTuber','Gerar polÃªmica e ganhar inscritos','5','2','2018');
 
 
 update cursos set nome = 'HTML5' where idcurso = '1';
@@ -121,7 +120,7 @@ select * from cursos order by nome asc; /*crescente*/
 
 select nome,carga,ano from cursos order by nome;
 
-desc cursos; /*olhar a descrição da tabela*/
+desc cursos; /*olhar a descriÃ§Ã£o da tabela*/
 
 select * from cursos where ano = '2016' order by nome;
 
@@ -134,12 +133,12 @@ select nome,ano from cursos where ano between 2014 and 2016 order by ano desc,no
 select * from cursos where carga > 35 and totalaulas < 30 order by nome;
 
 
-select * from cursos where nome like 'P%';/*Traz todos os cursos com nome que começam com 'P'*/
+select * from cursos where nome like 'P%';/*Traz todos os cursos com nome que comeÃ§am com 'P'*/
 select * from cursos where nome like '%A';/*Terminam com a letra A*/
 select * from cursos where nome like '%A%';/*com A em qualquer lugar*/
-select * from cursos where nome not like '%A%';/* traz todos os cursos onde não tenha a palavra A*/
+select * from cursos where nome not like '%A%';/* traz todos os cursos onde nÃ£o tenha a palavra A*/
 
-update cursos set nome = 'PáOO' where idcruso = '9';
+update cursos set nome = 'PÃ¡OO' where idcruso = '9';
 
 select * from cursos where nome like 'ph%p%';	
 select * from cursos where nome like 'ph%p_';
@@ -179,17 +178,17 @@ select sexo,count(*) from gafanhotos where nascimento > '2005-01-01' group by se
 
 select nacionalidade,count(*) as quantidade from gafanhotos where nacionalidade not like 'Brasil' group by nacionalidade having quantidade > 3 ORDER by quantidade;
 
-/*Média altura das pessoas*/
-SELECT AVG(altura) from gafanhotos; /*MÉDIA=1.664918*/
-/*Buscando todas as pessoas que tem altura acima da média*/
+/*MÃ©dia altura das pessoas*/
+SELECT AVG(altura) from gafanhotos; /*MÃ‰DIA=1.664918*/
+/*Buscando todas as pessoas que tem altura acima da mÃ©dia*/
 select altura from gafanhotos where altura > (SELECT AVG(altura) from gafanhotos);
-/*Quantidade de pessoas com altura acima da média*/
+/*Quantidade de pessoas com altura acima da mÃ©dia*/
 select count(altura) from gafanhotos where altura > (SELECT AVG(altura) from gafanhotos);
-/*Busca quantidade de pessoas por altura com média acima de 1.6 que foi a média achada*/
+/*Busca quantidade de pessoas por altura com mÃ©dia acima de 1.6 que foi a mÃ©dia achada*/
 select altura,count(*) from gafanhotos where altura > (SELECT AVG(altura) from gafanhotos) GROUP by altura;
 
 /*Um lista agrupada pela altura dos gafanhotos,mostrando quantas pessoas pesam mais de 100KG
-e que estão acima da média de altura de todos os cadastrados*/
+e que estÃ£o acima da mÃ©dia de altura de todos os cadastrados*/
 select altura,count(*) from gafanhotos where peso > 100 and altura > (SELECT AVG(altura) from gafanhotos) GROUP by altura;
 
 
@@ -208,7 +207,7 @@ select gafanhotos.nome,gafanhotos.cursopreferido,cursos.nome,cursos.ano
 from gafanhotos join cursos on cursos.idcurso=gafanhotos.cursopreferido 
 order by gafanhotos.nome;
 
-/*INNER JOIN pega todas as relações e ignora os casos sem relação*/
+/*INNER JOIN pega todas as relaÃ§Ãµes e ignora os casos sem relaÃ§Ã£o*/
 select g.nome,c.nome,c.ano from gafanhotos as g inner join cursos as c
 on c.idcurso = g.cursopreferido order by g.nome;
 
@@ -217,11 +216,11 @@ select gafanhotos.nome,gafanhotos.cursopreferido,cursos.nome,
 cursos.ano from gafanhotos outer join cursos on cursos.idcurso=gafanhotos.cursopreferido
 order by gafanhotos.nome;
 
-/*LEFT JOIN-> dá preferência à tabela da esquerda*/
-/*RIGHT JOIN-> dá preferência à tabela da direita*/
+/*LEFT JOIN-> dÃ¡ preferÃªncia Ã  tabela da esquerda*/
+/*RIGHT JOIN-> dÃ¡ preferÃªncia Ã  tabela da direita*/
 
 
-/*Criando tabela intermediária para relação de N->N*/
+/*Criando tabela intermediÃ¡ria para relaÃ§Ã£o de N->N*/
 create table gafanhotos_assiste_curso(
 id int not null auto_increment,
 data date,
