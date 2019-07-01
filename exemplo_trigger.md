@@ -21,13 +21,13 @@ for each row
 begin
 declare percentual_comissao float(10,2);
 declare valor_comissao float(10,2);
-## busco o percentual de comiss„o que o vendedor deve
+## busco o percentual de comiss√£o que o vendedor deve
 ## receber
 select rt_percentual_comissao(new.n_numevende)
 into percentual_comissao;
-## calculo a comiss„o
+## calculo a comiss√£o
 set valor_comissao = ((total_venda * comissao) / 100);
-## recebo no novo valor de comiss„o
+## recebo no novo valor de comiss√£o
 set new.n_vcomvenda = valor_comissao;
 end
 $$
@@ -63,12 +63,12 @@ create trigger tri_vendas_ai
 	after insert on comivenda
 	for each row
 	begin
-	#declaro as vari·veis que utilizarei
+	#declaro as vari√°veis que utilizarei
 	declare vtotal_itens float(10,2);
 	declare vtotal_item float(10,2);
 	declare total_item float(10,2);
 
-	##cursor para buscar os itens j· registrados da venda
+	##cursor para buscar os itens j√° registrados da venda
 	declare busca_itens cursor for
 	select  n_totaivenda
 	from comivenda
