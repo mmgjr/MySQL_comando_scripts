@@ -14,7 +14,7 @@ declare aux int default 0;
 declare fimloop int default 0;
 ## cursor para buscar os registros a serem
 ## processados entre a data inicial e data final
-## e valor total de venda È maior que zero
+## e valor total de venda √© maior que zero
 declare busca_pedido cursor for
 select n_numevenda,
 n_totavenda,
@@ -23,7 +23,7 @@ from comvenda
 where d_datavenda between data_inicial
 and data_final
 and n_totavenda > 0 ;
-## FaÁo aqui um tratamento para o banco n„o
+## Fa√ßo aqui um tratamento para o banco n√£o
 ## executar o loop quando ele terminar
 ## evitando que retorne qualquer erro
 declare
@@ -39,7 +39,7 @@ vendas: LOOP
 if fimloop = 1 then
 leave vendas;
 end if;
-##recebo o resultado da consulta em cada vari·vel
+##recebo o resultado da consulta em cada vari√°vel
 fetch busca_pedido into venda, total_venda,
 vendedor;
 ## busco o valor do percentual de cada vendedor
@@ -47,28 +47,28 @@ select n_porcvende
 into comissao
 from comvende
 where n_numevende = vendedor;
-## verifico se o percentual do vendedor È maior
-## que zero logo apÛs a condiÁ„o deve ter o then
+## verifico se o percentual do vendedor √© maior
+## que zero logo ap√≥s a condi√ß√£o deve ter o then
 if (comissao > 0 ) then
 ## calculo o valor da comissao
 set valor_comissao =
 ((total_venda * comissao) / 100);
-## faÁo o update na tabela comvenda com o
-## valor da comiss„o
+## fa√ßo o update na tabela comvenda com o
+## valor da comiss√£o
 update comvenda set
 n_vcomvenda = valor_comissao
 where n_numevenda = venda;
 commit;
-## verifico se o percentual do vendedor È igual
+## verifico se o percentual do vendedor √© igual
 ## zero na regra do nosso sistema se o vendedor
-## tem 0 ele ganha 0 porcento de comiss„o
+## tem 0 ele ganha 0 porcento de comiss√£o
 elseif(comissao = 0) then
 update comvenda set n_vcomvenda = 0
 where n_numevenda = venda;
 commit;
-## se ele n„o possuir registro no percentual de
-## comiss„o ele ir· ganhar 1 de comiss„o
-## isso pela regra de negÛcio do nosso sistema
+## se ele n√£o possuir registro no percentual de
+## comiss√£o ele ir√° ganhar 1 de comiss√£o
+## isso pela regra de neg√≥cio do nosso sistema
 else
 set comissao = 1;
 set valor_comissao =
@@ -80,11 +80,11 @@ commit;
 ## fecho o if
 end if;
 set comissao = 0;
-##utilizo a vari·vel aux para contar a quantidade
+##utilizo a vari√°vel aux para contar a quantidade
 set aux = aux +1 ;
 end loop vendas;
-## atribuo o total de vendas para a vari·vel de
-## saÌda
+## atribuo o total de vendas para a vari√°vel de
+## sa√≠da
 set total_processado = aux;
 ## fecho o cursor
 close busca_pedido;
