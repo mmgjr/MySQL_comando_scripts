@@ -26,5 +26,30 @@
   >**Exemplos de comandos:** BEGIN TRANSACTION, COMMIT E ROLLBACK.
 ### DCL (Data Control Language)-> Linguagem de controle de dados.
   >**Exemplo:** GRANT,REVOKE e DENY.
-
->Extensão de arquivos SQL termina com : **.sql**
+  
+  ## Tipagem dos dados em MySQL
+  
+  |Tipo|Uso|
+  |:---:|---|
+  |**CHAR**|String. Caractéres|
+  |**VARCHAR**|String Variante|
+  |**INT**|Numéricos|
+  |**FLOAT**|Numéricos.Pontos flutuantes|
+  |**BLOB**|Fotos e documentos|
+  |**TEXT**|Para textos extensos|
+  
+  #### CHAR x VARCHAR
+  
+  **CHAR:** Usado para locação de dados estáticos, pois não varia o seu tamanho, mantém o tamanho definido na sua criação.
+  **VARCHAR:** Usado para dados variantes. Assim, o tamanho pode variar de acordo com o dado armazenado até o limite especificado na sua criação.
+  
+  #### ENUM - está presente apenas no MySQL
+  
+  #### Tratando consultas com menor impacto na performace
+  
+  **Situação - Trantando com OU/OR:** 70%(dado I) e 30%(dado II), passe o dado com maior procentagem(quantidade) como primeiro parâmetro.
+  
+  **Situação - Trantando com E/AND:** 70%(dado I) e 30%(dado II), passe o dado com menor procentagem(quantidade) como primeiro parâmetro.
+  
+  
+>**OBS:** Extensão de arquivos SQL termina com : **.sql**
