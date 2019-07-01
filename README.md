@@ -17,9 +17,9 @@
 >Dependência transitiva. Os campos não chave que não depende da totalidade das chaves,mas sim de outros campos não chave. Eles se tornam outra tabela.
 
 ### DDL (Data Definition Language)-> Linguagem de definição de dados.
-  >**Exemplos de comando:** Create table, Create DataBase, Alter Table, Drop Table.
+  >**Exemplos de comando:** CREATE TABLE, CREATE DATABASE, ALTER TABLE, DROP TABLE.
 ### DML (Data Manipulation Language)-> Linguagem de manipulação de dados.
-  >**Exemplos de comandos:** Insert Into, Update, Delete, Truncate.
+  >**Exemplos de comandos:** INSERT INTO, UPDATE, DELETE, TRUNCATE.
 ### DQL (Data Query Language)-> Requisição de dados ou consulta.
   >**Exemplo:** SELECT
 ### DTL (Data Transaction Language)-> Linguagem de transação de dados.
